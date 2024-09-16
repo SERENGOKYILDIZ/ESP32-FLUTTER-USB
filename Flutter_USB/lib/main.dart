@@ -4,7 +4,6 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:usb_serial/transaction.dart';
 import 'package:usb_serial/usb_serial.dart';
-import 'package:logging_to_logcat/logging_to_logcat.dart';
 
 void main() => runApp(MyApp());
 
@@ -93,7 +92,7 @@ class _MyAppState extends State<MyApp> {
       _ports.add(ListTile(
           leading: Icon(Icons.usb),
           title: Text(device.productName!),
-          subtitle: Text(device.manufacturerName!),
+          subtitle: Text(device.manufacturerName ?? "Unknown Manufacturer"),
           trailing: ElevatedButton(
             child: Text(_device == device ? "Disconnect" : "Connect"),
             onPressed: () {
